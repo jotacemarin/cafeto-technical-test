@@ -1,0 +1,24 @@
+<div class="container">
+  <mat-list>
+    <h3 mat-subheader>Vehicles</h3>
+    <mat-list-item class="capitalize cursor" (click)="modal()">
+      <mat-icon mat-list-icon>drive_eta</mat-icon>
+      <h4 mat-line>create vehicle</h4>
+    </mat-list-item>
+    <h3 mat-subheader>Vehicles</h3>
+    <ng-container *ngIf="vehicles && vehicles?.length > 0">
+      <mat-list-item *ngFor="let vehicle of vehicles" class="capitalize cursor" (click)="actions(vehicle)">
+        <mat-icon mat-list-icon>drive_eta</mat-icon>
+        <h4 mat-line>{{ vehicle?.mark + ' ' + vehicle?.model }}</h4>
+        <p mat-line>{{ vehicle?.licence_plate }} - {{ vehicle?.relase_date }}</p>
+        <p mat-line>{{ vehicle?.created_at | date }}</p>
+      </mat-list-item>
+    </ng-container>
+    <ng-container *ngIf="!vehicles || vehicles?.length === 0">
+      <mat-list-item>
+        <mat-icon mat-list-icon>cancel</mat-icon>
+        <h4 mat-line>without vehicles</h4>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</div>

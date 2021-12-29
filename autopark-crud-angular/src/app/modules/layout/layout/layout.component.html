@@ -1,0 +1,31 @@
+<mat-sidenav-container>
+  <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" style="width: 190px;">
+    <mat-list>
+      <mat-list-item >
+        <mat-icon mat-list-icon>apps</mat-icon>
+        <h4 mat-line class="uppercase">{{ appName }}</h4>
+      </mat-list-item>
+      <mat-list-item *ngFor="let route of routes" [routerLink]="route?.path">
+        <mat-icon mat-list-icon>{{ route?.icon }}</mat-icon>
+        <h4 mat-line class="capitalize">{{ route?.label }}</h4>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-icon mat-list-icon>close</mat-icon>
+        <h4 mat-line class="capitalize">cerrar sesion</h4>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <mat-toolbar>  
+      <mat-toolbar-row>
+        <mat-icon class="icon" aria-hidden="false" aria-label="menu para barra de navegacion lateral" (click)="snav.toggle()">menu</mat-icon>
+        <span class="capitalize">{{ appName }}</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-list>
+    <h3 mat-subheader>Parks</h3>
+    <mat-list-item class="capitalize cursor" (click)="modal()">
+      <mat-icon mat-list-icon>folder</mat-icon>
+      <h4 mat-line>create park</h4>
+    </mat-list-item>
+    <h3 mat-subheader>Parks</h3>
+    <ng-container *ngIf="parks && parks?.length > 0">
+      <mat-list-item *ngFor="let park of parks" class="capitalize cursor" (click)="goTo(park)">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{ park?.name }}</h4>
+        <p mat-line>{{ park?.created_at | date }}</p>
+      </mat-list-item>
+    </ng-container>
+    <ng-container *ngIf="!parks || parks?.length === 0">
+      <mat-list-item>
+        <mat-icon mat-list-icon>cancel</mat-icon>
+        <h4 mat-line>without parks</h4>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</div>
